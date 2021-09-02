@@ -1,11 +1,13 @@
 <template>
-  <div class="post">
+  <div class="post no-white">
     <div class="user-box">
-      <img
-        :src="`https://cdn2.scratch.mit.edu/get_image/user/${data.author.id}_500x500.png`"
-        class="pfp"
-      />
-      <p>{{ data.author.username }}</p>
+      <a :href="`https://scratch.mit.edu/users/${data.author.username}`">
+        <img
+          :src="`https://cdn2.scratch.mit.edu/get_image/user/${data.author.id}_500x500.png`"
+          class="pfp"
+        />
+        <p>{{ data.author.username }}</p>
+      </a>
     </div>
     <div class="renderer">
       <div class="tutorial-content">
@@ -18,10 +20,7 @@
 export default {
   props: ["id", "data"],
   data() {
-    return {
-      author: "",
-      body: "",
-    };
+    return {};
   },
   async fetch() {
     if (this.data) return;
@@ -32,8 +31,8 @@ export default {
 };
 </script>
 <style>
-.post * {
-  color: black !important;
+.post {
+  color: black;
 }
 .post {
   display: flex;
@@ -45,6 +44,8 @@ export default {
 
 .user-box {
   padding: 22px;
+  border-right-color: black;
+  border-right-width: 2px;
 }
 .pfp {
   width: 90px;
@@ -53,5 +54,10 @@ export default {
 
 .renderer {
   border-left: 1px black;
+}
+
+.post a {
+  color: black;
+  text-decoration: none;
 }
 </style>

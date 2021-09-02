@@ -2,7 +2,6 @@ if (!process.server && process.client)
   throw new Error(
     `Unexpected Error: authorization.server.js has been ran in client context. This plugin must be ran in server context.`
   );
-// Server Authorization
 
 import monk from "monk";
 import axios from "axios";
@@ -21,9 +20,7 @@ users.createIndex("username", { unique: true });
 export var module = {
   async getSession(session) {
     if (!session) return null;
-    const sessionObject = await sessions.findOne({
-      session,
-    });
+    const sessionObject = await sessions.findOne({ session });
 
     if (!sessionObject) return null;
     let user;
@@ -45,11 +42,11 @@ export var module = {
       username: { $regex: new RegExp("^" + escapeRegExp(name) + "$", "i") },
     });
 
-    return user ? user : null;
+    return user ?? null;
   },
   async createSession(username) {
     const token = await generateToken();
-    const session = await sessions.insert({
+    await sessions.insert({
       session: token,
       user: username,
     });
@@ -74,6 +71,11 @@ export var module = {
       username: data.username,
       admin: false,
     };
+
+    // Temporary way to get admin
+    if (["TheColaber", "9gr"].includes(User.username)) {
+      User.admin = true;
+    }
 
     await users.insert(User);
 
@@ -135,7 +137,7 @@ function escapeRegExp(string) {
 async function generateToken() {
   let buffer = await new Promise((resolve, reject) => {
     crypto.randomBytes(256, (ex, buffer) => {
-      if (ex) return reject("error generating token");
+      if (ex) return reject("error generating token :(");
       resolve(buffer);
     });
   });

@@ -1,4 +1,3 @@
-// Based on https://github.com/jeffalo/ocular/blob/main/store/auth.js
 import cookies from "js-cookie";
 var module;
 if (process.server) {
@@ -56,7 +55,7 @@ export const actions = {
     if (process.server) {
       await module.deleteSession(token);
     } else {
-      await this.$axios.put(`/auth/delete`, {}, { headers });
+      await this.$axios.delete("/auth/me", {}, { headers });
     }
 
     commit("resetUser");

@@ -15,7 +15,7 @@ export default {};
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
     sans-serif, Apple Color Emoji, Segoe UI Emoji;
 }
-*:not(code, button, input, textarea) {
+*:not(code, button, input, textarea, .no-white *) {
   color: #fff;
 }
 
@@ -36,11 +36,13 @@ body {
 
 .margined {
   margin-left: 88.5px;
+  margin-right: 88.5px;
 }
 
 @media only screen and (max-width: 500px) {
   .margined {
     margin-left: 5px;
+    margin-right: 5px;
   }
 }
 
@@ -56,5 +58,7 @@ button {
   cursor: pointer;
   border-color: #fff;
   border-width: 2px;
+  border-style: solid;
+  border-radius: 10px;
 }
 </style>

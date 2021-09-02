@@ -36,9 +36,10 @@ export default {
     },
     copyCode() {
       navigator.clipboard.writeText(this.code);
+      let self = this;
       this.copied = true;
       setTimeout(() => {
-        this.copied = false;
+        self.copied = false;
       }, 3000);
     },
     async finishAuth() {

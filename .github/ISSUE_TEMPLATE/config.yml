@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 💬 Discussion
+    url: https://github.com/FlagClicked/FlagClicked/discussions/new
+    about: Needs discussion (moved to Discussions)
+  - name: ❓ Help/questions
+    url: https://github.com/FlagClicked/FlagClicked/discussions/new
+    about: Ask a question (moved to Discussions)
