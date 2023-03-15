@@ -21,7 +21,7 @@
     "js-cookie": "^3.0.0",
     "monk": "^7.3.4",
     "node-fetch": "^2.6.1",
-    "nuxt": "^2.15.7"
+    "nuxt": "^3.3.1"
   },
   "keywords": []
 }
